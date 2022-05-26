@@ -1,5 +1,6 @@
 const { Pool } = require('pg')
 
+// Archivo de configuración para conectarse a local
 /*const config = {
     user: 'postgres',
     password: 'postgres',
