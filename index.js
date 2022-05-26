@@ -50,7 +50,7 @@ app.get("/", async (req, res) => {
 
 //Ruta para registrarse
 app.get("/register", (req, res) => {
-    res.render('registro', { layout: "registro" })
+    res.render('registro', { layout: "Registro" })
 })
 
 //Ruta para iniciar sesión
