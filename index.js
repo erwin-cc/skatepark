@@ -172,10 +172,10 @@ app.delete("/eliminar", async (req, res) => {
     const usuario = participantes.find(participante => participante.email == email)
     try {
         //Eliminación de foto almacenada, correspondiente al participante 
+        await eliminarParticipante(email)
         await fs.unlink(`${__dirname}/public/uploads/${usuario.foto}`, (error) => {
             console.log(`No se ha podido eliminar la imagen asociada al usuario: ${email}`)
         })
-        await eliminarParticipante(email)
         return res.redirect("/")
     } catch (err) {
         res.status(500).send({ Descripcion: err.message, Error: err })
