@@ -1,11 +1,18 @@
 const { Pool } = require('pg')
 
-const config = {
+/*const config = {
     user: 'postgres',
     password: 'postgres',
     host: 'localhost',
     database: 'skatepark',
     port: 5432
+}*/
+
+const config = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 }
 
 const pool = new Pool(config)
@@ -28,7 +35,7 @@ const getParticipantes = async () => {
 const actualizarParticipante = async (datos) => {
     const values = Object.values(datos)
     const consulta = {
-        text:"update skaters set nombre=$2, password=$3, anos_experiencia=$4, especialidad=$5 where email=$1 returning*",
+        text: "update skaters set nombre=$2, password=$3, anos_experiencia=$4, especialidad=$5 where email=$1 returning*",
         values
     }
     const res = await pool.query(consulta)

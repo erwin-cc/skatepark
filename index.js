@@ -24,7 +24,12 @@ app.engine(
     })
 )
 
-app.listen(3000, () => console.log("Servidor activo en http://localhost:3000"))
+const port = process.env.PORT;
+if (port == "" || port == null) {
+    port=3000
+}
+
+app.listen(port, () => console.log("Servidor activo."))
 
 
 const llaveSecreta = "clavemuysecreta";
