@@ -1,0 +1,48 @@
+{{> head}}
+
+<body>
+  <h1>Skate Park</h1>
+
+  <div class="py-4">
+    <h2>Administración</h2>
+    <hr />
+
+    <table class="table w-50 m-auto">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Foto</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Años de experiencia</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each participantes}}
+        <tr>
+          <th scope="row">{{id}}</th>
+          <td>
+            <div><img class="fotoskater" src="/public/uploads/{{foto}}" alt="{{foto}}"></div>
+          </td>
+          <td>{{nombre}}</td>
+          <td>{{anos_experiencia}}</td>
+          <td>{{especialidad}}</td>
+          {{#if estado}}
+          <td><input type="checkbox" name="estado" data-email="{{email}}" checked /></td>
+          {{else}}
+          <td><input type="checkbox" name="estado" data-email="{{email}}" /></td>
+          {{/if}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <button id="btnGuardar" class="btn btn-danger my-3">Guardar</button>
+
+
+
+  </div>
+  {{> adminScript}}
+</body>
+
+</html>

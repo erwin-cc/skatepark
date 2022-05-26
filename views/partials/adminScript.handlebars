@@ -1,0 +1,29 @@
+<script>
+    const btnGuardar = document.getElementById("btnGuardar")
+    const inputs = document.querySelectorAll("input")
+    let datos = []
+
+    btnGuardar.addEventListener("click", async () => {
+        datos = []
+        inputs.forEach(elem => {
+            let estado = {
+                estado: elem.checked,
+                email: elem.dataset.email
+            }
+            datos.push(estado)
+        })
+        try {
+            await fetch("/estados", {
+                method: 'PUT',
+                body: JSON.stringify(datos),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            window.location.replace("/")
+        } catch (err) {
+            console.log(err)
+        }
+    })
+
+</script>

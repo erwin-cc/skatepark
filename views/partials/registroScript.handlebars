@@ -1,0 +1,14 @@
+<script>
+    const btnRegistro = document.getElementById("btnRegistro")
+
+    btnRegistro.addEventListener("click", (e) => {
+        e.preventDefault()
+        let pass = document.getElementsByName("password")[0].value
+        let repass = document.getElementById("repassword").value
+        if (pass == repass) {
+            document.getElementById("registroForm").requestSubmit()
+        } else {
+            alert("Los password ingresados no coinciden")
+        }
+    })
+</script>

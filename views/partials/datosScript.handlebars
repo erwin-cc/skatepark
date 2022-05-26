@@ -1,0 +1,27 @@
+<script>
+    const btnActualizar = document.getElementById("btnActualizar")
+
+    btnActualizar.addEventListener("click", (e) => {
+        e.preventDefault()
+        let pass = document.getElementsByName("password")[0].value
+        let repass = document.getElementById("repassword").value
+        if (pass == repass) {
+            document.getElementById("actualizarForm").requestSubmit()
+        } else {
+            alert("Los password ingresados no coinciden")
+        }
+    })
+
+    const btnEliminar = document.getElementById("btnEliminar")
+
+    btnEliminar.addEventListener("click", async () => {
+        let email = document.getElementsByName("email")[0].value
+        try {
+            await fetch(`/eliminar?email=${email}`, {method: 'DELETE'})
+            window.location.replace("/")
+        } catch(err) {
+            console.log(err)
+        }
+    })
+
+</script>
