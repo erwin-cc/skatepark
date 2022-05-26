@@ -50,12 +50,12 @@ app.get("/", async (req, res) => {
 
 //Ruta para registrarse
 app.get("/register", (req, res) => {
-    res.render('Registro', { layout: "Registro" })
+    res.render('Registro', { layout: "registro" })
 })
 
 //Ruta para iniciar sesión
 app.get("/login", (req, res) => {
-    res.render('login', { layout: "login" })
+    res.render('Login', { layout: "login" })
 })
 
 let usuarioConectado = [];
@@ -85,7 +85,7 @@ app.get("/dashboard", async (req, res) => {
         try {
             const participantesData = await getParticipantes()
             const participantes = participantesData.rows
-            res.render('admin', {
+            res.render('Admin', {
                 layout: "admin",
                 participantes
             })
@@ -93,7 +93,7 @@ app.get("/dashboard", async (req, res) => {
             res.status(500).send({ Descripcion: err.message, Error: err })
         }
     } else {
-        res.render('datos', {
+        res.render('Datos', {
             layout: "datos",
             usuarioConectado
         })
